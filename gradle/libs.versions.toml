@@ -1,8 +1,8 @@
 [versions]
 
-kotlin = "2.1.21"
+kotlin = "2.1.20"
 compose = "1.8.0"
-agp = "8.9.3"
+agp = "8.9.1"
 androidx-activityCompose = "1.10.1"
 androidx-uiTest = "1.8.1"
 kermit = "2.0.5"
@@ -17,6 +17,8 @@ kotlinx-datetime = "0.6.2"
 room = "2.7.1"
 ksp = "2.1.21-2.0.1"
 buildConfig = "5.6.5"
+detekt = "1.23.8"
+detekt-compose = "0.0.26"
 
 [libraries]
 
@@ -48,6 +50,8 @@ multiplatformSettings = { module = "com.russhwolf:multiplatform-settings-no-arg"
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
+detekt-compose = { module = "com.twitter.compose.rules:detekt", version.ref = "detekt-compose" }
 
 [plugins]
 
@@ -59,3 +63,11 @@ kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", vers
 room = { id = "androidx.room", version.ref = "room" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 buildConfig = { id = "com.github.gmazzo.buildconfig", version.ref = "buildConfig" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+
+[bundles]
+
+detekt-rules = [
+    "detekt-formatting",
+    "detekt-compose"
+]
