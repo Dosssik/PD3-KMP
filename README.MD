@@ -20,3 +20,14 @@ To run the application on iPhone device/simulator:
  - Or use [Kotlin Multiplatform Mobile plugin](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile) for Android Studio
 Run iOS simulator UI tests: `./gradlew :composeApp:iosSimulatorArm64Test`
 
+---
+
+### Contributing
+
+#### Pre-commit git hook (run Detekt)
+
+To enable, run:
+
+```bash
+git config core.hooksPath .githooks
+```
