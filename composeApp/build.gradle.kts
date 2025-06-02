@@ -1,5 +1,10 @@
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
+import io.gitlab.arturbosch.detekt.Detekt
+
+kotlin {
+    jvmToolchain(21)
+}
 
 plugins {
     alias(libs.plugins.multiplatform)
@@ -10,8 +15,14 @@ plugins {
     alias(libs.plugins.room)
     alias(libs.plugins.ksp)
     alias(libs.plugins.buildConfig)
+    alias(libs.plugins.detekt)
 }
 
+detekt {
+    config.setFrom("../rules/default-detekt-config.yml")
+    buildUponDefaultConfig = true
+    autoCorrect = true
+}
 kotlin {
     androidTarget {
         //https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-test.html
@@ -95,6 +106,7 @@ android {
 dependencies {
     androidTestImplementation(libs.androidx.uitest.junit4)
     debugImplementation(libs.androidx.uitest.testManifest)
+    detektPlugins(libs.bundles.detekt.rules)
 }
 
 buildConfig {
@@ -112,5 +124,17 @@ dependencies {
         add("kspIosX64", this)
         add("kspIosArm64", this)
         add("kspIosSimulatorArm64", this)
+    }
+}
+
+tasks.withType<Detekt>().configureEach {
+    exclude { element ->
+        element.file.path.contains("/build/generated/")
+    }
+}
+
+tasks.register("detektAll") {
+    allprojects {
+        this@register.dependsOn(tasks.withType<Detekt>())
     }
 }
