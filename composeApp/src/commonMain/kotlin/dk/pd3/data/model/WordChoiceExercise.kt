@@ -1,12 +1,12 @@
 package dk.pd3.data.model
 
-data class WordChoiceTask(
+data class WordChoiceExercise(
     override val id: String,
     override val instruction: String,
-    override val taskText: String,
+    override val baseText: String,
     val blanks: List<BlankOption>,
     val correctAnswers: List<BlankAnswer>
-) : Pd3Task()
+) : Pd3Exercise()
 
 data class BlankOption(
     val blankId: String,

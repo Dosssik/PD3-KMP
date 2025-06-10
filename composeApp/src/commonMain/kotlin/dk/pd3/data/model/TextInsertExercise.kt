@@ -1,12 +1,12 @@
 package dk.pd3.data.model
 
-data class TextInsertTask(
+data class TextInsertExercise(
     override val id: String,
     override val instruction: String,
-    override val taskText: String,
+    override val baseText: String,
     val options: List<TextInsertOption>,
     val correctAnswers: List<GapAnswer>
-) : Pd3Task()
+) : Pd3Exercise()
 
 data class TextInsertOption(
     val id: String,

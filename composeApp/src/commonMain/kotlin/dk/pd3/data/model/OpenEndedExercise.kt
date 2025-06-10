@@ -1,11 +1,11 @@
 package dk.pd3.data.model
 
-data class OpenEndedQuestionTask(
+data class OpenEndedExercise(
     override val id: String,
     override val instruction: String,
-    override val taskText: String,
+    override val baseText: String,
     val questions: List<OpenEndedQuestion>
-) : Pd3Task()
+) : Pd3Exercise()
 
 data class OpenEndedQuestion(
     val id: String,

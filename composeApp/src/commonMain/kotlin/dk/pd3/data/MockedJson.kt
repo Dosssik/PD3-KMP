@@ -117,8 +117,15 @@ val mockedJsonTextInsertTask = """
           "correctOptionId": "F"
         },
         {
-          "gapNumber":
-
+          "gapNumber": 4,
+          "correctOptionId": "G" 
+        },
+        {
+          "gapNumber": 5,
+          "correctOptionId": "D"  
+        }
+      ]
+    }
 """.trimIndent()
 
 val mockedJsonWordChoiceTask = """

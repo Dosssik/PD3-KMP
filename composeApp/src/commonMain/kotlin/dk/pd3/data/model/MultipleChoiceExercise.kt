@@ -1,11 +1,11 @@
 package dk.pd3.data.model
 
-data class MultipleChoiceTask(
+data class MultipleChoiceExercise(
     override val id: String,
     override val instruction: String,
-    override val taskText: String,
-    val questionsAnswers: List<MultipleChoiceQuestion>
-) : Pd3Task()
+    override val baseText: String,
+    val questions: List<MultipleChoiceQuestion>
+) : Pd3Exercise()
 
 data class MultipleChoiceQuestion(
     val id: String,
